@@ -20,6 +20,20 @@
 };
 
 / {
+	mt_cw: mod_tap_caps_word {
+		compatible = 
+		"zmk,behaviour-hold-tap";
+			label = "MT_CW";
+			#binding-cells = <2>;
+			tapping-term-ms = <150>;
+			flavor = "balanced";
+			retro-tap;
+			bindings = <&kp>,<&caps_word>;
+
+	};
+};
+
+/ {
 	keymap {
 		compatible = "zmk,keymap";
 
@@ -32,9 +46,9 @@
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 			bindings = <
 &kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
-&kp TAB   &kp Q  &kp W  &kp F    &kp P    &kp B                      &kp J  &kp L    &kp U     &kp Y   &kp SEMI    &kp NON_US_HASH
-&kp LCTRL &kp A  &kp R  &kp S    &kp T    &kp G                      &kp M  &kp N    &kp E     &kp I   &kp O &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp D    &kp V  &kp LBKT   &kp RBKT &kp K  &kp H    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+&kp TAB   &kp Q  &kp W  &kp F    &kp P    &kp B                      &kp J  &kp L    &kp U     &kp Y   &kp SEMI &kp NON_US_HASH
+&kp LCTRL &kp A  &kp R  &kp S    &kp T    &kp G                      &kp M  &kp N    &kp E     &kp I   &kp O    &kp SQT
+&kp LSHFT &kp Z  &kp X  &kp C    &kp D    &kp V  &kp LBKT   &kp RBKT &kp K  &kp H    &kp COMMA &kp DOT &kp FSLH &mt_cw RSHFT 0
                         &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp RGUI
 			>;
 
@@ -44,16 +58,16 @@
 		lower_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |  F12  |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
-// |  F1   | PGU | INS |  ^   |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  [   |   ]   |  F12  |
-// |  LCTR | PGD |  <- |  V   |  ->  |  %   |                   |  +   |  -    |  =    |  (   |   )   |   ~   |
-// |  LSHF | PLAY| ^F23| ^F24 |  mF23|  mF24|        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
+// |  CAPS | PGU | INS |  ^   |  ^F21|  ^F22|                   |  ^   |  &    |  *    |  [   |   ]   |  DEL  |
+// |  LCTR | PGD |  <- |  V   |  ->  |  %   |                   |  +   |  -    |  =    |  (   |   )   |  RCTR |
+// |  LSHF | PLAY| ^F23| ^F24 |  mF23|  mF24|        |  |       |      |  _    |  +    |  {   |   }   |  LSHF |
 //                     |      |      |      |        |  |       |      |       |       |
 			bindings = <
-&kp F12    &kp F1           &kp F2            &kp F3            &kp F4              &kp F5                                 &kp F6    &kp F7    &kp F8          &kp F9      &kp F10   &kp F11
-&kp CAPS   &kp PG_UP        &kp UP            &kp UP            &kp F5              &kp F6                                 &kp CARET &kp AMPS  &kp ASTRK       &kp LBKT    &kp RBKT  &kp F12
-&kp LCTRL  &kp PG_DN        &kp LEFT          &kp DOWN          &kp RIGHT           &kp PRCNT                              &kp PLUS  &kp MINUS &kp EQUAL       &kp LPAR    &kp RPAR  &kp TILDE
-&kp LSHFT  &kp C_PP         &kp LS(F23)       &kp LS(F24)       &kp LC(LS(LA(F23))) &kp LC(LS(LA(F24))) &trans   &trans    &kp BSLH  &kp UNDER &kp KP_PLUS     &kp LBRC    &kp RBRC  &kp PIPE
-                                              &trans            &trans              &trans              &trans   &trans    &trans    &trans    &trans
+&kp F12   &kp F1    &kp F2      &kp F3      &kp F4              &kp F5                            &kp F6          &kp F7    &kp F8      &kp F9   &kp F10  &kp F11
+&kp CAPS  &kp PG_UP &kp INS     &kp UP      &kp LS(F21)         &kp LS(F22)                       &kp CARET       &kp AMPS  &kp ASTRK   &kp LBKT &kp RBKT &kp DEL
+&kp LCTRL &kp PG_DN &kp LEFT    &kp DOWN    &kp RIGHT           &kp PRCNT                         &kp PLUS        &kp MINUS &kp EQUAL   &kp LPAR &kp RPAR &trans
+&kp LSHFT &kp C_PP  &kp LS(F23) &kp LS(F24) &kp LC(LS(LA(F23))) &kp LC(LS(LA(F24))) &trans &trans &kp NON_US_BSLH &kp UNDER &kp KP_PLUS &kp LBRC &kp RBRC &trans
+                                &trans      &trans              &trans              &trans &trans &trans          &trans    &trans
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -61,17 +75,17 @@
 
 		raise_layer {
 // ------------------------------------------------------------------------------------------------------------
-// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
-// |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
-// |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
-// |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
-//                     |      |      |      |        |  |       |      |       |       |
+// |  ESC  |       |     |     |     |     |                   |      |      |      |      |      |       |
+// |  CAPS |   !   |  "  |  £  |  $  |  %  |                   | PREV | NEXT | ^F18 | ^F19 | ^F20 |  DEL  |
+// |  LCTR |       |  ¬  |  `  |     |     |                   | WIN1 | WIN2 | WIN3 | WIN4 | WIN5 |  RCTR |
+// |  LSHF |CAPSWRD|  F9 | F10 | F11 |     |        |  |       | VOL- | VOL+ | MUTE |WRKLFT|WRKRHT|  RSHF |
+//                       |     |     |     |        |  |       |      |      |      |
 			bindings = <
-&trans    &trans &trans &trans  &trans  &trans                       &trans      &trans    &trans    &trans   &trans    &trans
-&kp CAPS  &kp EXCL &kp AT &kp POUND  &kp DOLLAR  &kp PRCNT                       &kp N6      &kp N7    &kp N8    &kp N9   &kp N0    &trans
-&trans    &kp F2   &kp F3 &kp F4     &kp F5      &kp F6                       &trans      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT &trans
-&trans    &kp F8   &kp F9 &kp F10    &kp F11     &kp F12   &trans   &trans    &kp KP_PLUS &kp MINUS &kp EQUAL &kp LBKT &kp RBKT  &kp BSLH
-                          &trans     &trans      &trans    &trans   &trans    &trans      &trans    &trans
+&trans   &trans     &trans    &trans    &trans          &trans                  &trans       &trans       &trans      &trans           &trans            &trans
+&kp CAPS &kp EXCL   &kp AT    &kp POUND &kp DOLLAR      &kp PRCNT               &kp C_PREV   &kp C_NEXT   &kp LS(F18) &kp LS(F19)      &kp LS(F20)       &kp DEL
+&trans   &kp F2     &kp TILDE &kp GRAVE &kp PIPE2       &kp LS(f)               &kp LG(1)    &kp LG(2)    &kp LG(3)   &kp LG(4)        &kp LG(5)         &trans
+&trans   &caps_word &kp F9    &kp F10   &kp NON_US_BSLH &kp F12   &trans &trans &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE  &kp LG(LC(LEFT)) &kp LG(LC(RIGHT)) &trans
+                              &trans    &trans          &trans    &trans &trans &trans       &trans       &trans
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
