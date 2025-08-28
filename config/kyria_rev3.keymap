@@ -27,14 +27,14 @@
 
         default_layer {
         // ---------------------------------------------------------------------------------------------------------------------------------
-        // |  TAB  |   Q   |   Y   |   U   |   O   |   /   |                                |   X   |   L   |   D   |   W   |   Z   |   `   |
-        // |   B   |   C   |   I   |   E   |   A   |   ,   |                                |   K   |   H   |   G   |   N   |   S   |   V   |
-        // |  CTRL |   '   |   -   |   =   |   .   |   ;   |       |       ||       |       |   J   |   M   |   T   |   P   |   F   |  RET  |
+        // |  TAB  |   Z   |   Y   |   U   |   O   |   ;   |                                |   Q   |   L   |   D   |   P   |   X   |   `   |
+        // |   W   |   C   |   I   |   E   |   A   |   ,   |                                |   K   |   H   |   T   |   N   |   S   |   F   |
+        // |  CTRL |   '   |   -   |   =   |   .   |   /   |       |       ||       |       |   J   |   M   |   G   |   B   |   V   |  RET  |
         //                         |  ALT  | SHIFT |   L1  |   R   | SPACE || SHIFT |  BSPC |   L2  |  GUI  |  CTRL |
             bindings = <
-            &kp TAB   &kp Q   &kp Y     &kp U     &kp O     &kp FSLH                                      &kp X &kp L    &kp D    &kp W &kp Z &kp GRAVE
-            &kp B     &kp C   &kp I     &kp E     &kp A     &kp COMMA                                     &kp K &kp H    &kp G    &kp N &kp S &kp V
-            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT   &kp SEMI  &none &none      &none     &none    &kp J &kp M    &kp T    &kp P &kp F &kp RET
+            &kp TAB   &kp Z   &kp Y     &kp U     &kp O     &kp SEMI                                      &kp Q &kp L    &kp D    &kp P &kp X &kp GRAVE
+            &kp W     &kp C   &kp I     &kp E     &kp A     &kp COMMA                                     &kp K &kp H    &kp T    &kp N &kp S &kp F
+            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT   &kp FSLH  &none &none      &none     &none    &kp J &kp M    &kp G    &kp B &kp V &kp RET
                                         &kp LALT  &kp LSHFT &mo 1     &kp R &kp SPACE  &kp RSHFT &kp BSPC &mo 2 &kp RGUI &kp RCTRL
             >;
 
