@@ -32,10 +32,10 @@
         // |  CTRL |   '   |   -   |   =   |   .   |   /   |       |       ||       |       |   J   |   M   |   G   |   B   |   V   |  RET  |
         //                         |  ALT  | SHIFT |R or L1| SPACE |       ||       | SHIFT |   L2  |  BSPC |  GUI  |
             bindings = <
-            &kp TAB   &kp Z   &kp Y     &kp U     &kp O     &kp SEMI                                   &kp Q &kp L    &kp D    &kp P &kp X &kp GRAVE
-            &kp W     &kp C   &kp I     &kp E     &kp A     &kp COMMA                                  &kp K &kp H    &kp T    &kp N &kp S &kp F
-            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT   &kp FSLH  &none     &none  &none &none     &kp J &kp M    &kp G    &kp B &kp V &kp RET
-                                        &kp LALT  &kp LSHFT &lt 1 R   &kp SPACE &none  &none &kp RSHFT &mo 2 &kp BSPC &kp RGUI
+            &kp TAB   &kp Z   &kp Y     &kp U     &kp O     &kp SEMI                                  &kp Q   &kp L    &kp D    &kp P &kp X &kp GRAVE
+            &kp W     &kp C   &kp I     &kp E     &kp A     &kp COMMA                                 &kp K   &kp H    &kp T    &kp N &kp S &kp F
+            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT   &kp FSLH &none     &none  &none &none     &kp J   &kp M    &kp G    &kp B &kp V &kp RET
+                                        &kp LALT  &kp LALT &mo 1    &kp LSHFT &none  &none &kp SPACE &lt 2 R &kp BSPC &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
