@@ -17,10 +17,6 @@
 };
  */
 
-&soft_off {
-	hold-time-ms = <3000>;
-};
-
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -32,9 +28,9 @@
         // |  CTRL |   '   |   -   |   =   |   .   |   /   |       |       ||       |       |   J   |   M   |   G   |   B   |   V   |  RET  |
         //                         |  GUI  |  ALT  |   L1  | SHIFT |       ||       | SPACE |  R>L2 |  BSPC |  GUI  |
             bindings = <
-            &kp TAB   &kp Z   &kp Y     &kp U     &kp O     &kp SEMI                                  &kp Q   &kp L    &kp D    &kp P &kp X &kp GRAVE
-            &kp W     &kp C   &kp I     &kp E     &kp A     &kp COMMA                                 &kp K   &kp H    &kp T    &kp N &kp S &kp F
-            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT   &kp FSLH &none     &none  &none &none     &kp J   &kp M    &kp G    &kp B &kp V &kp RET
+            &kp TAB   &kp Z   &kp Y     &kp U     &kp O    &kp SEMI                                  &kp Q   &kp L    &kp D    &kp P &kp X &kp GRAVE
+            &kp W     &kp C   &kp I     &kp E     &kp A    &kp COMMA                                 &kp K   &kp H    &kp T    &kp N &kp S &kp F
+            &kp LCTRL &kp SQT &kp MINUS &kp EQUAL &kp DOT  &kp FSLH &none     &none  &none &none     &kp J   &kp M    &kp G    &kp B &kp V &kp RET
                                         &kp LGUI  &kp LALT &mo 1    &kp LSHFT &none  &none &kp SPACE &lt 2 R &kp BSPC &kp RGUI
             >;
 
@@ -44,13 +40,13 @@
         // ---------------------------------------------------------------------------------------------------------------------------------
         // | VOL_UP|  COPY | PASTE |   ^   |  F12  |  C+F5 |                                |   /   |   7   |   8   |   9   |   *   |  BSPC |
         // | VOL_DN|  ESC  |   <   |   V   |   >   | PSCRN |                                |   =   |   4   |   5   |   6   |   +   |   .   |
-        // |  NEXT |  PLAY | tab(L)| tab(R)| m(F23)| m(F24)|       |       ||       |  TAB  |   0   |   1   |   2   |   3   |   -   |  RET  |
+        // |  NEXT |  PLAY | tab(L)| tab(R)|  F23  |  F24  |       |       ||       |  TAB  |   0   |   1   |   2   |   3   |   -   |  RET  |
         //                         |       |       |       | SPACE |       ||       | SHIFT |   L3  |  DEL  | SPACE |
             bindings = <
-            &kp C_VOL_UP &kp LC(C) &kp LC(LS(V))   &kp UP      &kp F12             &kp LC(F5)                                       &kp FSLH  &kp N7 &kp N8 &kp N9 &kp ASTRK &kp BSPC
-            &kp C_VOL_DN &kp ESC   &kp LEFT        &kp DOWN    &kp RIGHT           &kp PSCRN                                        &kp EQUAL &kp N4 &kp N5 &kp N6 &kp PLUS  &kp DOT
-            &kp C_NEXT   &kp C_PP  &kp LC(LS(TAB)) &kp LC(TAB) &kp LG(LC(LS(F23))) &kp LG(LC(LS(F24))) &none &none  &none &kp TAB   &kp N0    &kp N1 &kp N2 &kp N3 &kp MINUS &kp RET
-                                                   &none       &none               &trans              &none &none  &none &kp RSHFT &mo 3     &kp DEL &kp SPACE
+            &kp C_VOL_UP &kp LC(C) &kp LC(V)       &kp UP      &kp F12   &kp LC(F5)                              &kp FSLH  &kp N7   &kp N8 &kp N9 &kp ASTRK &kp DEL
+            &kp C_VOL_DN &kp ESC   &kp LEFT        &kp DOWN    &kp RIGHT &kp PSCRN                               &kp EQUAL &kp N4   &kp N5 &kp N6 &kp PLUS  &kp DOT
+            &kp C_NEXT   &kp C_PP  &kp LC(LS(TAB)) &kp LC(TAB) &kp F23   &kp F24    &none &none  &none &kp TAB   &kp N0    &kp N1   &kp N2 &kp N3 &kp MINUS &kp RET
+                                                   &none       &none     &trans     &none &none  &none &kp RSHFT &mo 3     &kp BSPC &kp SPACE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -59,13 +55,13 @@
         // ---------------------------------------------------------------------------------------------------------------------------------
         // |   \   |   [   |   ]   |   {   |   }   |   |   |                                |  NEXT |  PREV |       |       |       |       |
         // |   ~   |   #   |   ^   |   (   |   )   |   !   |                                |  w(1) |  w(2) |  w(3) |  w(4) |  w(5) |  w(6) |
-        // |  TODO |   "   |   £   |   $   |   %   |   &   |       |       ||SOFTOFF|       |       |       | ws(L) | ws(R) |  w(7) |  w(8) |
+        // |  TODO |   "   |   £   |   $   |   %   |   &   |       |       ||       |SOFTOFF|       |       | ws(L) | ws(R) |  w(7) |  w(8) |
         //                         |       |   L3  |       | SPACE |       ||       |       |   L2  |       |       |
             bindings = <
             &kp NUBS   &kp LBKT &kp RBKT  &kp LBRC &kp RBRC  &kp PIPE2                                  &kp C_PREV     &kp C_NEXT     &kp C_MUTE       &none             &none          &none
             &kp TILDE2 &kp NUHS &kp CARET &kp LPAR &kp RPAR  &kp EXCL                                   &kp LC(LG(N1)) &kp LC(LG(N2)) &kp LC(LG(N3))   &kp LC(LG(N4))    &kp LC(LG(N5)) &kp LC(LG(N6))
-            &none      &kp AT   &kp HASH  &kp DLLR &kp PRCNT &kp AMPS  &none     &none  &soft_off &none &none          &none          &kp LC(LG(LEFT)) &kp LC(LG(RIGHT)) &kp LC(LG(N7)) &kp LC(LG(N8))
-                                          &none    &none     &mo 3     &kp SPACE &none  &none     &none &trans         &none          &none
+            &none      &kp AT   &kp HASH  &kp DLLR &kp PRCNT &kp AMPS  &none     &none  &none &soft_off &none          &none          &kp LC(LG(LEFT)) &kp LC(LG(RIGHT)) &kp LC(LG(N7)) &kp LC(LG(N8))
+                                          &none    &none     &mo 3     &kp SPACE &none  &none &none     &trans         &none          &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
