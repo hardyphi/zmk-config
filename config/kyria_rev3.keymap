@@ -5,17 +5,10 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* Uncomment this block if using RGB
-&led_strip {
-    chain-length = <6>;
-    // chain-length = <31>; // Uncomment if using both per-key and underglow LEDs
-    // chain-length = <25>; // Uncomment if using only per-key LEDs.
-};
- */
 
 / {
     keymap {
@@ -68,15 +61,15 @@
         };
         mouse_layer {
         // ---------------------------------------------------------------------------------------------------------------------------------
-        // |       |      |BT_CLR|BTSEL0|BTSEL1|BTSEL2|                                         |      |      |      |      |      |      |
-        // |       |      |      |BTSEL3|BTSEL4|      |                                         |      |      |      |      |      |      |
-        // |       |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
-        //                       |      |      |      |      |      |      |      |      |      |      |      |      |
+        // | BT(0) | BT(1) | BT(2) |       |       |       |                                |       |       |       |       |       |       |
+        // | BT_CLR|       |       |       |       |       |                                |       |       |       |       |       |       |
+        // |       |       |       |       |       |       |       |       ||       |       |       |       |       |       |       |       |
+        //                         |       |       |   L3  |       |       ||       |       |   L3  |       |       |
             bindings = <
             &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &mmv MOVE_UP   &none           &none                              &msc SCRL_UP   &msc SCRL_LEFT &msc SCRL_RIGHT &none    &none   &none 
             &bt BT_CLR   &none        &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none                              &msc SCRL_DOWN &mkp MB1       &mkp MB3        &mkp MB2 &none   &none 
             &kp F12      &kp F1       &kp F2         &kp F3         &kp F4          &kp F5                             &kp F6         &kp F7         &kp F8          &kp F9   &kp F10 &kp F11
-                                                     &none          &none           &trans &none  &none  &none  &none  &trans         &none           &none 
+                                                     &none          &none           &trans &none  &none  &none  &none  &trans         &none          &none 
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
